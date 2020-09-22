@@ -11,17 +11,15 @@ describe("User can see menu", () => {
   });
 
   it("shows first item", () => {
-    cy.get("product-1").within(() => {
+    cy.get("[data-cy=product-1]").within(() => {
       cy.contains("Pizza");
-      cy.contains("Best pizza");
       cy.contains("55");
     });
   });
 
   it("shows second item", () => {
-    cy.get("#product-2").within(() => {
+    cy.get("[data-cy=product-2]").within(() => {
       cy.contains("Cheeseburger");
-      cy.contains("Best burger");
       cy.contains("70");
     });
   });
