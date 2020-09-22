@@ -32,7 +32,6 @@ class App extends Component {
         <Menu 
           authenticted={this.state.authenticated}
         />
-
       </>
     )
   }
