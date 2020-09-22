@@ -13,6 +13,8 @@ class Menu extends Component {
 
   render() {
     const menu = this.state.menu;
+    const authenticted = this.props.authenticted;
+
     return (
       <>
         { menu.length > 0 && menu.map(item => {
@@ -21,6 +23,7 @@ class Menu extends Component {
               <div data-cy={"product-" + item.id} id={"product-" + item.id}>
                 <p>{item.name}</p>
                 <p>{item.price}</p>
+                { authenticted && <button>Add to order</button>}
               </div>
             </>
           );
