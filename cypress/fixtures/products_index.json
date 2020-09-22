@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Pizza",
+      "price": "55"
+    },
+    {
+      "id": 2,
+      "name": "Cheeseburger",
+      "price": "70"
+    },
+    {
+      "id": 3,
+      "name": "Steak",
+      "price": "90"
+    },
+    {
+      "id": 4,
+      "name": "Scrambled Egg",
+      "price": "50"
+    }
+  ]
+}
