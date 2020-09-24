@@ -1,4 +1,4 @@
-describe("User can add product to order", () => {
+describe("User can add multiple products to their order", () => {
   beforeEach(() => {
     cy.server();
     cy.route({
@@ -25,6 +25,15 @@ describe("User can add product to order", () => {
       }
     })
 
+    cy.route({
+      method: "PUT",
+      url: "http://localhost:3000/api/v1/orders/11",
+      response: "fixture:successfull_order_create_or_update.json",
+      headers: {
+        uid: "user@mail.com",
+      }
+    })
+
     cy.visit("/");
 
     cy.get("[data-cy=toggle-login]").click();
@@ -37,6 +46,14 @@ describe("User can add product to order", () => {
   
   it("successfully", () => {
     cy.get("[data-cy=product-1]").within(() => {
+      cy.get('button').contains("Add to order").click()
+    });
+
+    cy.get("[data-cy=product-2]").within(() => {
+      cy.get('button').contains("Add to order").click()
+    });
+
+    cy.get("[data-cy=product-3]").within(() => {
       cy.get('button').contains("Add to order").click()
     });
 
