@@ -35,7 +35,7 @@ describe("User can add product to order", () => {
     });
   });
   
-  describe("successfully", () => {
+  it("successfully", () => {
     cy.get("[data-cy=product-1]").within(() => {
       cy.get('button').contains("Add to order").click()
     });
