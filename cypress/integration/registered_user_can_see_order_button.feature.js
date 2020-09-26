@@ -9,7 +9,7 @@ describe("Display list of products", () => {
     cy.visit("/");
   });
 
-  it("if authenticate sucesfully", () => {
+  it("if authenticate successfully", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v1/auth/sign_in",
