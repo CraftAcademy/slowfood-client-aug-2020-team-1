@@ -11,6 +11,15 @@ class ProductsList extends Component {
     this.setState({ products: products });
   };
 
+  addToOrder = async (event) => {
+    let productId = event.target.parentElement.dataset.id
+    let result = createOrder(productId)
+    this.setState({orderDetails: {
+      id: productId, 
+      message: result.data.message,
+    }})
+  }
+
   render() {
     let productsList;
 
@@ -22,7 +31,7 @@ class ProductsList extends Component {
             <p data-cy="price">{product.price}</p>
             <p data-cy="description">{product.description}</p>
             {this.props.authenticated && (
-              <button data-cy="button">Add to order</button>
+              <button onClick={this.addToOrder} data-cy="button">Add to order</button>
             )}
           </div>
         );
