@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { fetchProductData } from "../modules/products";
+import { createOrder } from "../modules/orders";
 
 class ProductsList extends Component {
   state = {
     products: [],
+    orderDetails: {},
   };
 
   componentDidMount = async () => {
@@ -12,13 +14,15 @@ class ProductsList extends Component {
   };
 
   addToOrder = async (event) => {
-    let productId = event.target.parentElement.dataset.id
-    let result = createOrder(productId)
-    this.setState({orderDetails: {
-      id: productId, 
-      message: result.data.message,
-    }})
-  }
+    let productId = event.target.parentElement.dataset.id;
+    let result = createOrder(productId);
+    this.setState({
+      orderDetails: {
+        id: productId,
+        message: result.message,
+      },
+    });
+  };
 
   render() {
     let productsList;
@@ -31,7 +35,12 @@ class ProductsList extends Component {
             <p data-cy="price">{product.price}</p>
             <p data-cy="description">{product.description}</p>
             {this.props.authenticated && (
-              <button onClick={this.addToOrder} data-cy="button">Add to order</button>
+              <button onClick={this.addToOrder} data-cy="button">
+                Add to order
+              </button>
+            )}
+            {product.id === parseInt(this.state.orderDetails.id) && (
+              <p>{this.state.orderDetails.message}</p>
             )}
           </div>
         );
