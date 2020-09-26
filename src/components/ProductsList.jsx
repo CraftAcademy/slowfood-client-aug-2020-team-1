@@ -15,7 +15,7 @@ class ProductsList extends Component {
 
   addToOrder = async (event) => {
     let productId = event.target.parentElement.dataset.id;
-    let result = createOrder(productId);
+    let result = await createOrder(productId);
     this.setState({
       orderDetails: {
         id: productId,
@@ -30,7 +30,7 @@ class ProductsList extends Component {
     if (this.state.products !== []) {
       productsList = this.state.products.map((product) => {
         return (
-          <div data-cy={"product-" + product.id} key={product.id}>
+          <div data-cy={"product-" + product.id} data-id={product.id}>
             <h3 data-cy="name">{product.name}</h3>
             <p data-cy="price">{product.price}</p>
             <p data-cy="description">{product.description}</p>
