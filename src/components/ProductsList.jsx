@@ -13,6 +13,7 @@ class ProductsList extends Component {
 
   render() {
     let productsList;
+
     if (this.state.products !== []) {
       productsList = this.state.products.map((product) => {
         return (
@@ -20,6 +21,9 @@ class ProductsList extends Component {
             <h3 data-cy="name">{product.name}</h3>
             <p data-cy="price">{product.price}</p>
             <p data-cy="description">{product.description}</p>
+            {this.props.authenticated && (
+              <button data-cy="button">Add to order</button>
+            )}
           </div>
         );
       });

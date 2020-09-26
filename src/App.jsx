@@ -35,22 +35,21 @@ class App extends Component {
         renderLogin = (
           <>
             <button
-              id="login"
+              data-cy="login"
               onClick={() => this.setState({ renderLoginForm: true })}
             >
               Login
             </button>
-            <p id="message">{message}</p>
+            <p data-cy="message">{message}</p>
           </>
         );
         break;
       case authenticated:
         renderLogin = (
-          <p id="message">
+          <p data-cy="message">
             Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}
           </p>
         );
-
         break;
       default:
         break;
@@ -60,7 +59,7 @@ class App extends Component {
       <>
         {renderLogin}
         <NavBar />
-        <ProductsList />
+        <ProductsList authenticated={this.state.authenticated} />
       </>
     );
   }

@@ -3,12 +3,12 @@ import React from "react";
 const LoginForm = ({ submitFormHandler }) => {
   return (
     <>
-      <form onSubmit={submitFormHandler} id="login-form">
+      <form onSubmit={submitFormHandler} data-cy="login-form">
         <label>Email</label>
-        <input name="email" type="email" id="email"></input>
+        <input name="email" type="email" data-cy="email"></input>
         <label>Password</label>
-        <input name="password" type="password" id="password"></input>
-        <button id="submit">Submit</button>
+        <input name="password" type="password" data-cy="password"></input>
+        <button data-cy="button">Submit</button>
       </form>
     </>
   );
