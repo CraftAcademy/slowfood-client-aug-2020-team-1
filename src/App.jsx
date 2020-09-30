@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Menu from "./components/Menu";
 import Login from "./components/Login";
+import BecomeSubscriber from "./components/BecomeSubscriber";
+
 
 class App extends Component {
   state = {
@@ -21,12 +23,15 @@ class App extends Component {
 
     return (
       <>
-        { this.state.authenticated == false &&
+        { this.state.authenticated ? (
+          <BecomeSubscriber />
+        ) : (
           <Login
             authenticated={() => this.setState({ authError: undefined, authenticated: true })}
             renderLoginError={(authResponse) => this.setState({ authError: authResponse })}
           />
-        }
+        )}
+
         {message}
         <h1>Slowfood</h1>
         <Menu 
