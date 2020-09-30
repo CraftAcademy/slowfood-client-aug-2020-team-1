@@ -19,7 +19,7 @@ describe("User can add product to order", () => {
     cy.route({
       method: "POST",
       url: "http://localhost:3000/api/v1/orders",
-      response: "fixture:successfull_order_create_or_update.json",
+      response: "fixture:successfull_order_create.json",
       headers: {
         uid: "user@mail.com",
       }
