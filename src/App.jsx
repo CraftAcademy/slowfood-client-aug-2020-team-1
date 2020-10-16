@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Menu from "./components/Menu";
 import Login from "./components/Login";
 import BecomeSubscriber from "./components/BecomeSubscriber";
+import { Elements } from 'react-stripe-elements'
 
 
 class App extends Component {
@@ -24,7 +25,9 @@ class App extends Component {
     return (
       <>
         { this.state.authenticated ? (
-          <BecomeSubscriber />
+          <Elements>
+            <BecomeSubscriber />
+          </Elements>
         ) : (
           <Login
             authenticated={() => this.setState({ authError: undefined, authenticated: true })}
